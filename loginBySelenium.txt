@@ -1,0 +1,24 @@
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+
+servobj=Service("chromedriver.exe path")
+
+driver=webdriver.Chrome(service=servobj)
+
+driver.get("URL")
+
+driver.find_element(By.NAME,"txtusername").clear()
+driver.find_element(By.NAME,"txtusername").sendkeys("Admin")
+driver.find_element(By.ID,"txtpassword").sendkeys("admin123")
+driver.find_element(By.ID,"loginButton").click()
+
+act_title=driver.title
+expec_title="FACEBOOK LOGIN"
+
+if act_title==expec_title:
+	print("test is passed......!!")
+else:
+	print("test is failed.....!!")
+
+driver.close()
